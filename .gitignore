@@ -1,5 +1,9 @@
 *.class
 
+#binaries from eclipse.
+bin/*
+.settings/*
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

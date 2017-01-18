@@ -1,0 +1,177 @@
+
+
+public static void main(String[] args){
+		Position p1 = new AbsPosition(8,8);
+		Position p2 = new AbsPosition();
+		Type t = Type.getInstance("test");
+
+		UCollisionCirc circ1 = new UCollisionCirc(p1, t, 8);
+		UCollisionCirc circ2 = new UCollisionCirc(p2, t, 4);
+		
+		
+		System.out.println("-----Circ Circ Collision Test-----");
+		for (int x = -4; x <= 20; x += 1){
+			for (int y = -4; y <= 20; y += 1){
+				p2.xPos = x;
+				p2.yPos = y;
+				if (circ1.intersects(circ2) && circ2.intersects(circ1)){
+					System.out.print("X ");
+				} else if (!circ1.intersects(circ2) && !circ2.intersects(circ1)){
+					System.out.print("  ");
+				} else {
+					System.out.print("E ");
+				}
+			}
+			System.out.println();
+		}	
+		
+		UCollisionRect rect = new UCollisionRect(p1, t);
+
+		circ2.setRadius(6);
+		System.out.println("-----Circ Rect Collision Test-----");
+		for (int x = 1; x <= 31; x += 1){
+			for (int y = 1; y <= 31; y += 1){
+				p2.xPos = x;
+				p2.yPos = y;
+				if (rect.intersects(circ2)){
+					System.out.print("X ");
+				} else if (!rect.intersects(circ2)){
+					System.out.print("  ");
+				} else {
+					System.out.print("E ");
+				}
+			}
+			System.out.println();
+		}	
+		
+		
+		UCollisionTriangle trig = new UCollisionTriangle(p1, t, 24, 8);
+		
+		System.out.println("-----Circ Trig Collision Test-----");
+		for (int y = -4; y <= 24; y += 1){
+			for (int x = 0; x <= 40; x += 1){
+				p2.xPos = x;
+				p2.yPos = y;
+				if (trig.intersects(circ2)){
+					System.out.print("X ");
+				} else if (!trig.intersects(circ2)){
+					System.out.print("  ");
+				} else {
+					System.out.print("E ");
+				}
+			}
+			System.out.println();
+		}	
+		
+		
+	}
+
+	
+		public static void main(String[] args){
+		Position p1 = new AbsPosition();
+		Position p2 = new AbsPosition();
+
+		Type t = Type.getInstance("test");
+
+		UCollisionRect rect1 = new UCollisionRect(p1, t);
+		rect1.p = p1;
+		
+
+		UCollisionRect rect2 = new UCollisionRect(p1, t, 8, 8);
+		
+		System.out.println("-----Rect Rect Collision Test-----");
+		for (int x = -12; x <= 20; x += 8){
+			for (int y = -12; y <= 20; y += 8){
+				p2.xPos = x;
+				p2.yPos = y;
+				if (rect1.intersects(rect2) && rect2.intersects(rect1)){
+					System.out.print("X ");
+				} else if (!rect1.intersects(rect2) && !rect2.intersects(rect1)){
+					System.out.print("  ");
+				} else {
+					System.out.print("E ");
+				}
+			}
+			System.out.println();
+		}
+	}
+	
+		public static void main(String[] args){
+		Position p1 = new AbsPosition();
+		Position p2 = new AbsPosition();
+
+		Type t = Type.getInstance("test");
+		
+		UCollisionTriangle trig1 = new UCollisionTriangle(p1, t, 24, 8);
+		p1.xPos = 0;
+		p1.yPos = 0;
+		
+		
+		UCollisionRect rect = new UCollisionRect(p2, t, 8, 8);
+		
+		
+		System.out.println("-----Rect Trig Collision Test-----");
+		for (int y = -12; y <= 20; y += 1){
+			for (int x = -12; x <= 36; x += 1){
+				p2.xPos = x;
+				p2.yPos = y;
+				if (rect.intersects(trig1) && trig1.intersects(rect)){
+					System.out.print("X ");
+				} else if (!rect.intersects(trig1) && !trig1.intersects(rect)){
+					System.out.print("  ");
+				} else {
+					System.out.print("E ");
+				}
+			}
+			System.out.println();
+		}
+		
+		UCollisionTriangle trig2 = new UCollisionTriangle(p2, t, -24, -8);
+		
+
+		System.out.println("-----Trig Trig Collision Test 1-----");
+		
+		for (int y = -1; y <= 24; y += 1){
+			for (int x = -1; x <= 64; x += 1){
+				p2.xPos = x;
+				p2.yPos = y;
+				if (trig2.intersects(trig1) && trig1.intersects(trig2)){
+					System.out.print("X ");
+				} else if (!trig2.intersects(trig1) && !trig1.intersects(trig2)){
+					System.out.print("  ");
+				} else if (trig1.intersects(trig2)){
+					System.out.print("1 ");
+				} else {
+					System.out.print("2 ");
+				}
+			}
+			System.out.println();
+		}
+
+
+		System.out.println("-----Trig Trig Collision Test 2-----");
+
+		trig2.offsetY2 = 8;
+		
+		for (int y = -10; y <= 24; y += 1){
+			for (int x = -1; x <= 64; x += 1){
+				p2.xPos = x;
+				p2.yPos = y;
+				if (trig2.intersects(trig1) && trig1.intersects(trig2)){
+					System.out.print("X ");
+				} else if (!trig2.intersects(trig1) && !trig1.intersects(trig2)){
+					System.out.print("  ");
+				} else if (trig1.intersects(trig2)){
+					System.out.print("1 ");
+				} else {
+					System.out.print("2 ");
+				}
+			}
+			System.out.println();
+		}
+
+	
+	}
+
+	
+	
